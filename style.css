@@ -1,0 +1,241 @@
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e3f2fd;
+    color: #333;
+    animation: fadeIn 1s ease-in-out;
+}
+
+header {
+    background-color: #2196f3;
+    color: white;
+    text-align: center;
+    padding: 2em 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: slideIn 1s ease-in-out;
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: #1976d2;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav a {
+    color: white;
+    padding: 14px 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: #64b5f6;
+    color: white;
+}
+
+section {
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+.section-container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+    overflow: hidden;
+    transition: transform 0.3s;
+    animation: slideIn 1s ease-in-out;
+}
+
+.section-container:hover {
+    transform: scale(1.02);
+}
+
+.section-container h2 {
+    background-color: #1976d2;
+    color: white;
+    margin: 0;
+    padding: 15px;
+    text-align: center;
+    font-size: 1.8em;
+}
+
+.section-container article {
+    padding: 20px;
+}
+
+.section-container article h3 {
+    color: #1976d2;
+    font-size: 1.5em;
+    margin-top: 0;
+}
+
+.section-container article p {
+    line-height: 1.6;
+    text-align: justify;
+}
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #1976d2;
+    color: white;
+    margin-top: 40px;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 2s ease-in-out;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9em;
+}
+
+/* Floating Action Button Style*/
+.fab {
+    position: fixed;
+    width: 56px;
+    height: 56px;
+    background-color: #2196f3;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    right: 20px;
+    bottom: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.fab:hover {
+    background-color: #64b5f6;
+}
+
+.fab i {
+    font-size: 24px;
+}
+
+/* Floating Button Options */
+.fab-options {
+    position: fixed;
+    right: 20px;
+    bottom: 80px;
+    display: none;
+    flex-direction: column;
+}
+
+.fab-option {
+    width: 56px;
+    height: 56px;
+    background-color: #2196f3;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.fab-option:hover {
+    background-color: #64b5f6;
+}
+
+.fab-option i {
+    font-size: 24px;
+}
+
+/* Media Queries for Responsive designs */
+@media (max-width: 1200px) {
+    .section-container {
+        margin: 20px;
+    }
+}
+
+@media (max-width: 992px) {
+    header h1 {
+        font-size: 2em;
+    }
+
+    .section-container h2 {
+        font-size: 1.6em;
+    }
+
+    .section-container article h3 {
+        font-size: 1.4em;
+    }
+}
+
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+    }
+
+    nav a {
+        padding: 10px;
+        text-align: center;
+    }
+
+    .section-container {
+        margin: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    header h1 {
+        font-size: 1.8em;
+    }
+
+    .section-container h2 {
+        font-size: 1.4em;
+    }
+
+    .section-container article h3 {
+        font-size: 1.3em;
+    }
+}
+
+@media (max-width: 400px) {
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    nav a {
+        font-size: 0.9em;
+    }
+
+    .section-container h2 {
+        font-size: 1.2em;
+    }
+
+    .section-container article h3 {
+        font-size: 1.1em;
+    }
+}

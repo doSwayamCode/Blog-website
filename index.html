@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swayam's Space</title>
+    <style>
+        /* Floating Action Button Styles */
+        .fab {
+            position: fixed;
+            width: 56px;
+            height: 56px;
+            background-color: #2196f3;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            right: 20px;
+            bottom: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .fab:hover {
+            background-color: #64b5f6;
+        }
+
+        .fab i {
+            font-size: 24px;
+        }
+
+        /* Floating Button Options */
+        .fab-options {
+            position: fixed;
+            right: 20px;
+            bottom: 80px;
+            display: none;
+            flex-direction: column;
+        }
+
+        .fab-option {
+            width: 56px;
+            height: 56px;
+            background-color: #2196f3;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .fab-option:hover {
+            background-color: #64b5f6;
+        }
+
+        .fab-option i {
+            font-size: 24px;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            width: 80%;
+        }
+
+        .modal-content h2 {
+            margin-top: 0;
+        }
+
+        .modal-content input,
+        .modal-content textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .modal-content button {
+            background-color: #2196f3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .modal-content button:hover {
+            background-color: #64b5f6;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Welcome to My Personal Webpage</h1>
+    </header>
+
+    <nav>
+        <a href="#biography">Biography</a>
+        <a href="#moral-stories">Moral Stories</a>
+        <a href="#horror-stories">Horror Stories</a>
+        <a href="#popular-reads">Popular Reads</a>
+    </nav>
+
+    <section id="biography" class="section-container">
+        <h2>Biography</h2>
+        <article>
+            <p>Hello! I am a BTech student with a passion for storytelling. I enjoy writing and sharing various types of
+                stories, from inspiring moral tales to thrilling horror stories. My goal is to engage readers and
+                provide them with content that they love to read. Welcome to my personal webpage where you can explore
+                my stories and learn more about me.</p>
+        </article>
+    </section>
+
+    <section id="moral-stories" class="section-container">
+        <h2>Moral Stories</h2>
+        <article>
+            <h3>The Honest Woodcutter</h3>
+            <p>Once upon a time, there was a poor woodcutter who accidentally dropped his axe into a river. As he sat by
+                the riverbank in despair, a deity appeared and offered to help. The deity presented him with a golden
+                axe and a silver axe, but the woodcutter refused, saying they were not his. Finally, the deity retrieved
+                his iron axe and rewarded him for his honesty by giving him all three axes. The woodcutter returned home
+                happily, knowing that honesty is always rewarded.</p>
+        </article>
+      
+    </section>
+
+    <section id="horror-stories" class="section-container">
+        <h2>Horror Stories</h2>
+        <article>
+            <h3>The Haunted House</h3>
+            <p>In a small town, there was a house known to be haunted. People heard eerie noises and saw strange shadows
+                moving at night. One day, a brave young man decided to spend a night in the house to uncover the truth.
+                As the clock struck midnight, he heard whispers and saw a ghostly figure approaching him. He gathered
+                his courage and asked who it was. The figure revealed it was a spirit trapped in the house, seeking help
+                to find peace. The young man performed a ritual and freed the spirit, ending the haunting forever.</p>
+        </article>
+      
+    </section>
+
+    <section id="popular-reads" class="section-container">
+        <h2>Popular Reads</h2>
+        <article>
+            <h3>The Inspiring Journey of a BTech Student</h3>
+            <p>This story follows the journey of a BTech student who overcomes numerous challenges to achieve success.
+                From late-night study sessions to balancing extracurricular activities, this narrative showcases the
+                perseverance and determination required to thrive in a demanding academic environment.</p>
+        </article>
+     
+    </section>
+
+    <!-- Floating Action Button -->
+    <div class="fab" onclick="toggleFabOptions()">
+        <i>+</i>
+    </div>
+
+    <div class="fab-options" id="fabOptions">
+        <div class="fab-option" onclick="openModal('addStoryModal')">
+            <i>+</i>
+        </div>
+        <div class="fab-option" onclick="openModal('contactModal')">
+            <i>@</i>
+        </div>
+    </div>
+
+    <!-- Add Story Modal -->
+    <div class="modal" id="addStoryModal">
+        <div class="modal-content">
+            <h2>Add Your Story</h2>
+            <input type="text" id="storyTitle" placeholder="Story Title" required>
+            <textarea id="storyContent" rows="5" placeholder="Your Story" required></textarea>
+            <select id="storyType">
+                <option value="moral">Moral Story</option>
+                <option value="horror">Horror Story</option>
+            </select>
+            <button onclick="addStory()">Submit</button>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div class="modal" id="contactModal">
+        <div class="modal-content">
+            <h2>Contact Us</h2>
+            <p>You can reach us at swayamgupta999@gmail.com</p>
+        </div>
+    </div>
+
+    <!-- html Integrations ---- -->
+    <section id="moral-stories" class="section-container">
+        <h2>Your Stories</h2>
+        <div id="moralStoriesContainer"></div>
+    </section>
+    <!-- 
+
+    
+niesgirn -->
+
+
+    <footer>
+        <p>&copy; 2024 My Personal Webpage. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleFabOptions() {
+            const fabOptions = document.getElementById('fabOptions');
+            if (fabOptions.style.display === 'flex') {
+                fabOptions.style.display = 'none';
+            } else {
+                fabOptions.style.display = 'flex';
+            }
+        }
+
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
+
+        window.onclick = function (event) {
+            const modals = document.getElementsByClassName('modal');
+            for (let modal of modals) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            }
+        }
+
+        function addStory() {
+            const title = document.getElementById('storyTitle').value;
+            const content = document.getElementById('storyContent').value;
+            const type = document.getElementById('storyType').value;
+
+            fetch('http://localhost:5000/addStory', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ title, content, type })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    alert('Story added successfully!');
+                    document.getElementById('addStoryModal').style.display = 'none';
+                    // Optionally, refresh the stories section here
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+    <script>
+        async function addStory() {
+            const title = document.getElementById('storyTitle').value;
+            const content = document.getElementById('storyContent').value;
+            const type = document.getElementById('storyType').value;
+
+            try {
+                const response = await fetch('http://localhost:5000/addStory', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ title, content, type })
+                });
+                const data = await response.json();
+                if (response.ok) {
+                    alert('Story added successfully!');
+                    document.getElementById('addStoryModal').style.display = 'none';
+                    // Optionally, refresh the stories section here
+                } else {
+                    console.error('Error adding story:', data);
+                    alert('Failed to add story.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Failed to add story.');
+            }
+        }
+    </script>
+
+    <script>
+        async function fetchStories() {
+            try {
+                const response = await fetch('http://localhost:5000/getStories');
+                const stories = await response.json();
+                if (response.ok) {
+                    return stories;
+                } else {
+                    throw new Error('Failed to fetch stories');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                throw error;
+            }
+        }
+    </script>
+
+
+    <script>
+        async function fetchAndDisplayStories() {
+            try {
+                const stories = await fetchStories();
+                const moralStoriesContainer = document.getElementById('moralStoriesContainer');
+                moralStoriesContainer.innerHTML = ''; // Clear previous content
+                stories.forEach(story => {
+                    if (story.type === 'moral') {
+                        moralStoriesContainer.innerHTML += `
+                        <article>
+                            <h3>${story.title}</h3>
+                            <p>${story.content}</p>
+                        </article>
+                    `;
+                    }
+                });
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        // Call fetchAndDisplayStories when the page loads
+        window.addEventListener('DOMContentLoaded', fetchAndDisplayStories);
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="server.js"></script>
+
+
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
+
+    <script>
+
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAho1f0cVNULB1T4VfjoA74slOtBFvqnMA",
+            authDomain: "swayam-page.firebaseapp.com",
+            databaseURL: "https://swayam-page-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "swayam-page",
+            storageBucket: "swayam-page.appspot.com",
+            messagingSenderId: "364354614830",
+            appId: "1:364354614830:web:b5040527a6c3617da711bf",
+            measurementId: "G-G3VL51NMF5"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+
+    <script>
+        const signInForm = document.getElementById('signInForm');
+        const signUpForm = document.getElementById('signUpForm');
+
+        // Sign in user
+        signInForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = signInForm.email.value;
+            const password = signInForm.password.value;
+            firebase.auth().signInWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    // Signed in successfully
+                    console.log('User signed in:', userCredential.user);
+                    // Redirect or show success message
+                })
+                .catch((error) => {
+                    console.error('Error signing in:', error.message);
+                    // Display error message to the user
+                });
+        });
+
+        // Sign up user
+        signUpForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = signUpForm.email.value;
+            const password = signUpForm.password.value;
+            firebase.auth().createUserWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    // Signed up successfully
+                    console.log('User signed up:', userCredential.user);
+                    // Redirect or show success message
+                })
+                .catch((error) => {
+                    console.error('Error signing up:', error.message);
+                    // Display error message to the user
+                });
+        });
+    </script>
+
+
+</body>
+
+</html>
